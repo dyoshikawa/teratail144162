@@ -2,10 +2,46 @@
 
 @section('content')
 
-<h1> {{$company->title}}  </h1>
-<p>{{$company->description}}</p>
-<br>
-<br>
+<main class="main pt-4" role="main">
+    <div class="container">
+	 <div class="row">
+      <div class="col-md-12">
+
+       <article class="card mb-4 text-center">
+       	 <br>
+         <h1 class="card-title">{{$company->title}}</h1>
+         <br>
+         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  			<div class="carousel-inner">
+		    <div class="carousel-item active">
+		      <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="First slide" height="500px">
+		    </div>
+		    <div class="carousel-item">
+		      <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw5n20gOJd13IIcrpeBGf4ep1mZ3bZIE5sJ0TXyDPZfEJeZDSyXQ" alt="Second slide" height="500px">
+		    </div>
+		    <div class="carousel-item">
+		      <img class="d-block w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpXw9c6G5qjBqFguDSFsPPY7Mu7udGRVl3grb27XnlOiOcXF9-" alt="Third slide" height="500px">
+		    </div>
+		  </div>
+		  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		 </div>
+		<br>
+		<br>
+        {{$company->description}}
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque <a href="#">penatibus</a> et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, <strong>pretium quis, sem.</strong></p>
+
+       </article>
+	  </div>
+	 </div>
+	</div>
+
 
 {!! Form::open(['url'=>'/companies/{{$company->id}}', 'method'=>'POST']) !!}
 
@@ -17,8 +53,9 @@
 
 
 
-<a href="/countries/{{$company->country_id}}" class="btn btn-success">Back</a>
+<a class="btn btn-success float-right" href="/countries/{{$company->country_id}}" style="margin-right: 10%">Back</a>
 
+</main>
 
 @endsection
 
