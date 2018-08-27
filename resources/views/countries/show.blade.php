@@ -11,86 +11,72 @@
   </div>
 
 
-  <div class="container space-3-bottom--lg">
-      <div class="row">
-        <div class="col-lg-9 order-lg-2 mb-9 mb-lg-0">
-          <div class="card-mb card-sm-columns card-sm-2-count">
-            <!-- Blog Grid -->
-            <article class="card mb-3">
-              <img class="card-img-top" src="../../assets/img/500x250/img11.jpg" alt="Image Description">
-              <div class="card-body p-5">
-                <small class="d-block text-muted mb-2">April 3, 2018</small>
-                <h3 class="h5">
-                  <a href="single-article-classic.html">Respect always comes first</a>
-                </h3>
-                <p>The past years have been remarkable for web technologies.</p>
-              </div>
-              <div class="card-footer bg-gray-100 py-4 px-5">
-                <div class="media">
-                  <img class="u-sm-avatar rounded-circle mr-3" src="../../assets/img/100x100/img1.jpg" alt="Image Description">
-                  <div class="media-body">
-                    <h4 class="d-inline-block mb-0">
-                      <a class="d-block font-size-13" href="single-article-classic.html">Andrea Gard</a>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-       </div>
-      </div>
 
-
-
-
-
-@if(count($country->companies)>0)
+  @if(count($country->companies)>0)
+      
     <?php
       $colcount = count($country->companies);
       $i = 1;
     ?>
-    <div id="photos">
-      <div>
+
+      <div class="container">
+        <div class="row text-center">
         @foreach($country->companies as $company )
-          @if($i == $colcount)
-             
+        @if($i == $colcount)
+          <div class="col-md-4">
+            <div class="card mb-3 shadow-sm" style="width: 18rem;">
+                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
 
+                <div class="card-body">
+                  <a href="/companies/{{$company->id}}"></a>
+                  <a href="{{ url('companies/'. $company->id)}}"><h5 class="card-title">{{$company->title}}</h5></a>
+                  <p class="card-text">ここに description</p>
+                </div>
 
-             <div>
-               <a href="/companies/{{$company->id}}">
-                </a>
-               <a href="{{ url('companies/'. $company->id)}}"><h2>{{$company->title}}</h2></a>
-               <h4>{!! $company->description !!}</h4>
-
-
-
-          @else
-            <div>
-               <a href="/companies/{{$company->id}}">
-                </a>
-               <a href="{{ url('companies/'. $company->id)}}"><h2>{{$company->title}}</h2></a>
-               <h4>{!! $company->description !!}</h4>
-
-               <hr class="bg-dark">
-
-          @endif
-          
-          @if($i % 1== 0)
-          </div></div>
-
-          <div>
-          @else
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">ここに勤務地</li>
+                  <li class="list-group-item">ここに給料</li>
+                  <li class="list-group-item">ここに勤務時間</li>
+                  <li class="list-group-item">その他</li>
+                </ul>
             </div>
-          @endif
+          </div>
+        @else
+          <div class="col-md-4">
+            <div class="card mb-3 shadow-sm" style="width: 18rem;">
+              <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
+
+              <div class="card-body">
+                <a href="/companies/{{$company->id}}"></a>
+                <a href="{{ url('companies/'. $company->id)}}"><h5 class="card-title">{{$company->title}}</h5></a>
+                <p class="card-text">ここに description</p>
+              </div>
+
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">ここに勤務地</li>
+                <li class="list-group-item">ここに給料</li>
+                <li class="list-group-item">ここに勤務時間</li>
+                <li class="list-group-item">その他</li>
+              </ul>
+            </div>
+        @endif
+
+        @if($i % 3== 0)
+          </div>  
+        </div>
+          <div class="row text-center">
+        @else
+          </div>
+        @endif
+
           <?php $i++; ?>
+
         @endforeach
-      </div>
     </div>
   @else
-    <p>!!!No Photos To Display!!!</p>
+    <p>!!!No Jobs To Display!!!</p>
   @endif
-
-<a href="/countries" class="btn btn-success">Back</a>
-
+<br>
+<a class="btn btn-success float-right" href="/countries" style="margin-right: 10%">Back</a>
+<br>
 @endsection

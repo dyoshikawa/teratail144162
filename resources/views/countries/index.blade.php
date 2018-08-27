@@ -14,102 +14,94 @@
 
   </head>
 
-  <body>
+<body>
 
-    <header>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <a href="/countries" class="navbar-brand d-flex align-items-center">
-            <strong>Africa Works</strong>
-          </a>
-        </div>
+  <header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <a href="/countries" class="navbar-brand d-flex align-items-center">
+        <strong>Africa Works</strong>
+        </a>
       </div>
-    </header>
+    </div>
+  </header>
 
 
-    <main role="main">
+  <main role="main">
 
-      <section class="jumbotron text-center">
-        <div class="container">
-        　<br>
-          <br>
-          <br>
-          <h1 class="jumbotron-heading">Africa Works</h1>
-          <br>
-          <p class="lead text-muted">Let's go to Africa for discovering</p>
-          <p>
-          <br>
-          <br>
-            <a href="/login" class="btn btn-primary my-2">Login</a>
-            <a href="/register" class="btn btn-secondary my-2">Register</a>
-          </p>
-          <br>
-        </div>
-      </section>
-
-
-        	
-    @if(count($countries) > 0)
-    <?php
-      $colcount = count($countries);
-      $i = 1;
-    ?>
-
-    <div class="countries py-5 bg-light">
+    <section class="jumbotron text-center">
       <div class="container">
-        <div class="row text-center">
-        @foreach($countries as $country)
+      <br>
+      <br>
+      <br>
+        <h1 class="jumbotron-heading">Africa Works</h1>
+      <br>
+        <p class="lead text-muted">Let's go to Africa for discovering</p>
+        <p>
+      <br>
+      <br>
+        <a href="/login" class="btn btn-primary my-2">Login</a>
+        <a href="/register" class="btn btn-secondary my-2">Register</a>
+        </p>
+      <br>
+      </div>
+    </section>
+
+    @if(count($countries) > 0)
+      <?php
+        $colcount = count($countries);
+        $i = 1;
+      ?>
+
+      
+        <div class="container">
+          <div class="row text-center">
+          @foreach($countries as $country)
           @if($i == $colcount)
             <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
-              <a href="{{ url('countries/'.$country->id)}}">
-              <br>
-              <h4>{{$country->name}}</h4>
-              </a>
-               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-               </div>
+              <div class="card mb-3">
+                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
+
+                <a href="{{ url('countries/'.$country->id)}}">
+                <br>
+                <h4>{{$country->name}}</h4>
+                </a>
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  </div>
               </div>
             </div>
           @else
             <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-              <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
-              <a href="{{ url('countries/'.$country->id)}}">
-              <a href="/countries/{{$country->id}}">
-              <br>
-              <h4>{{$country->name}}</h4>
-              </a>
-              <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-               </div>
+              <div class="card mb-3">
+                <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQyMGg1988pPi2NmtJ2zHBKx5ZMfvIzcaEotYBcpjJT4XNotYyBw" alt="Card image cap">
+
+                <a href="{{ url('countries/'.$country->id)}}">
+                <a href="/countries/{{$country->id}}">
+                <br>
+                <h4>{{$country->name}}</h4>
+                </a>
+                  <div class="card-body">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  </div>
               </div>
           @endif
           
           @if($i % 3 == 0)
+            </div>
           </div>
-        </div>
-      </div>
-
-          <div class="row text-center">
+            <div class="row text-center">
           @else
             </div>
           @endif
-          <?php $i++; ?>
-        @endforeach
-      </div>
-    </div>
-  @else
-    <p>No Albums To Display</p>
-  @endif
 
+            <?php $i++; ?>
+
+          @endforeach
         </div>
-      </div>
-    </div>
+    @endif
 
-
-    </main>
+  </main>
 
     <footer class="text-muted">
       <div class="container">
