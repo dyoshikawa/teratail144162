@@ -12,7 +12,8 @@ class Company extends Model
     	return $this->belongsTo('App\Country');
     }
 
-    public function user (){
+    public function user()
+    {
     	return $this->belongsToMany('App\User');
     }
 }

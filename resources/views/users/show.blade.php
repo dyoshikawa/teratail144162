@@ -4,7 +4,7 @@
         <table class="table table-striped">
                 <tr>
                     <th>{{ __('Name') }}</th>
-                    <td>{!! $user-> name !!}</td>
+                    <td>{!! $user->name !!}</td>
                 </tr>
 
                 <tr>

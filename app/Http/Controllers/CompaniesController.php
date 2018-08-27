@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Company;
+use App\User;
 
 class CompaniesController extends Controller
 {
@@ -35,7 +36,13 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $company_user= new Compay_User;
+            $company_user->company_id=$request->input('name');
+            $company_user->user_id=$request->input('description');
+            $company_user->save();
+
+            return redirect('/companies')->with('success', 'Succes to apply');
     }
 
     /**
@@ -48,6 +55,17 @@ class CompaniesController extends Controller
     {
         $company=Company::find($id);
         return view('companies.show')->with('company', $company);
+
+        $user = \Auth::user();
+            if ($user) {echo "Hello $user->name";}
+
+        $user= App\User::find($id);
+
+        App::before(function($request)
+            {
+                View::share('users', user::find("true"));
+            });
+
     }
 
     /**
