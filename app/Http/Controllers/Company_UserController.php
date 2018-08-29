@@ -1,25 +1,16 @@
-<?php
+    <?php
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Company;
-use App\User;
 
-class CompaniesController extends Controller
+class Company_UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-       /*public function __construct()
-    {
-        $this->middleware('auth', ['except'=>['show']]);
-    }*/
-
-
     public function index()
     {
         //
@@ -43,12 +34,11 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        $company_user= new Compay_User;
-        $company_user->company_id=$request->input('name');
-        $company_user->user_id=$request->input('description');
+        $company_user= new Company_User();
+        $company_user->company_id=$request->input('company.id');
+        $company_user->user_id= auth()->user()-> id;
         $company_user->save();
-        return redirect('/companies')->with('success', 'Succes to apply');
-        
+        return redirect('/companies/{{$company->id}}')->with('success', 'Successfully applyed');
     }
 
     /**
@@ -59,9 +49,7 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $company=Company::find($id);
-        return view('companies.show')->with('company', $company);
-
+        //
     }
 
     /**

@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function company (){
-        return $this->belongsToMany('App\Company');
+        return $this->belongsToMany('App\Company', 'company_user', 'user_id', 'company_id');
     }
 
 }

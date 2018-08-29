@@ -35,7 +35,7 @@
 		<br>
 		<br>
         {{$company->description}}
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque <a href="#">penatibus</a> et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, <strong>pretium quis, sem.</strong></p>
+
 
        </article>
 	  </div>
@@ -43,17 +43,24 @@
 	</div>
 
 
-{!! Form::open(['url'=>'/companies/{{$company->id}}', 'method'=>'POST']) !!}
+<?php
+	$role=Auth::user()->role;
+?>
+
+@if($role == "user")
+<h1>{{ Auth::user()->name }}</h1>
+{{ Auth::user()->id }}
 
 
-<!--{{Form::submit('apply',['class'=>'btn btn-danger'])}}-->
+
+{!! Form::open(['url'=>['/companies', $company->id], 'method'=>'POST']) !!}
+
+{{Form::submit('apply',['class'=>'btn btn-danger'])}}
 
 {!! Form::close() !!}
 
-
-
-
 <a class="btn btn-success float-right" href="/countries/{{$company->country_id}}" style="margin-right: 10%">Back</a>
+@endif
 
 </main>
 
