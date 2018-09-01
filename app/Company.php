@@ -12,9 +12,9 @@ class Company extends Model
     	return $this->belongsTo('App\Country');
     }
 
-    public function user()
+    public function users()
     {
-    	return $this->belongsToMany('App\User', 'company_user', 'company_id', 'user_id');
+    	return $this->belongsToMany('App\User', 'company_user');
     }
 
 

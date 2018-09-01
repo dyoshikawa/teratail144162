@@ -45,6 +45,7 @@
 
 <?php
 	$role=Auth::user()->role;
+	$users=Auth::user();
 ?>
 
 @if($role == "user")
@@ -52,8 +53,12 @@
 {{ Auth::user()->id }}
 
 
+{!!Form::open(['url'=>['/companies/{{$company->id}}'], 'method'=>'POST'])!!}
 
-{!! Form::open(['url'=>['/companies', $company->id], 'method'=>'POST']) !!}
+{{ csrf_field() }}
+
+{{Form::hidden('company_id', '$company->id')}}
+{{Form::hidden('user_id', 'Auth::user()->id')}}
 
 {{Form::submit('apply',['class'=>'btn btn-danger'])}}
 

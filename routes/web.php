@@ -15,6 +15,6 @@ Route::resource("countries", "CountriesController");
 Route::resource("companies", "CompaniesController");
 Route::resource("users", "UsersController");
 
-Auth::routes();
 
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

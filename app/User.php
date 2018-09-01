@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password', 'role'
     ];
 
     /**
@@ -27,8 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function company (){
-        return $this->belongsToMany('App\Company', 'company_user', 'user_id', 'company_id');
+    public function companies(){
+        return $this->belongsToMany('App\Company', 'company_user');
     }
 
 }

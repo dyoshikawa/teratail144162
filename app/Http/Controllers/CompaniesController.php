@@ -25,6 +25,7 @@ class CompaniesController extends Controller
         //
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,11 +44,6 @@ class CompaniesController extends Controller
      */
     public function store(Request $request)
     {
-        $company_user= new Compay_User;
-        $company_user->company_id=$request->input('name');
-        $company_user->user_id=$request->input('description');
-        $company_user->save();
-        return redirect('/companies')->with('success', 'Succes to apply');
         
     }
 
@@ -62,6 +58,10 @@ class CompaniesController extends Controller
         $company=Company::find($id);
         return view('companies.show')->with('company', $company);
 
+        $company=Company::findOrFail($request->input('company_id'));
+        $user=User::findOrFail(Auth::id());
+
+        $company->users()->attach($user->id);
     }
 
     /**

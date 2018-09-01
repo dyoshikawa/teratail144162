@@ -49,9 +49,7 @@
                     <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
-                        <div class="text-center">
-                            <h3>《連絡先等》</h3>
-                        </div>
+
                         <br>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('名前　※') }}</label>
@@ -67,7 +65,7 @@
                             </div>
                         </div>
 
-                        <!--<div class="form-group row">
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('電話番号　※') }}</label>
 
                             <div class="col-md-6">
@@ -83,9 +81,9 @@
 
                         <div class="form-group row">
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('生年月日　※') }}</label>
-
+                            
                             <div class="col-md-6">
-                                <input id="birthday" type="text" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" required>
+                                <input id="birthday" type="date" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}" name="birthday" value="{{ old('birthday') }}" required>
 
                                 @if ($errors->has('birthday'))
                                     <span class="invalid-feedback" role="alert">
@@ -95,10 +93,11 @@
                             </div>
                         </div>
 
+                        <br>
                         <div class="text-center">
                             <h3>《学歴》</h3>
                         </div>
-                        <br>
+                        
                         <div class="form-group row">
                             <label for="university_name" class="col-md-4 col-form-label text-md-right">{{ __('大学名　※') }}</label>
 
@@ -155,12 +154,13 @@
                             </div>
                         </div>
 
-                        <div class="text-center">
-                            <h3>《職歴》</h3>※職歴がある方は最新の物から記入。
-                        </div>
                         <br>
+                        <div class="text-center">
+                            <h3>《職歴》</h3><p style="margin-left:10%">※職歴がある方は最新の物から記入。</p>
+                        </div>
+
                         <div class="form-group row">
-                            <label for="company_name" class="col-md-4 col-form-label text-md-right">{{ __('会社名') }}</label>
+                            <label for="company_name" class="col-md-4 col-form-label text-md-right">{{ __('その１　会社名') }}</label>
 
                             <div class="col-md-6">
                                 <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('company_name') }}" required>
@@ -171,7 +171,78 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>-->
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="position" class="col-md-4 col-form-label text-md-right">{{ __('役職') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="position" type="text" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}" name="position" value="{{ old('position') }}" required>
+
+                                @if ($errors->has('position'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('position') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="period" class="col-md-4 col-form-label text-md-right">{{ __('期間') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="period" type="text" class="form-control{{ $errors->has('period') ? ' is-invalid' : '' }}" name="period" value="{{ old('period') }}" required>
+
+                                @if ($errors->has('period'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('period') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="form-group row">
+                            <label for="company_name2" class="col-md-4 col-form-label text-md-right">{{ __('その２　会社名') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name2') ? ' is-invalid' : '' }}" name="company_name2" value="{{ old('company_name2') }}" required>
+
+                                @if ($errors->has('company_name2'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('company_name2') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="position2" class="col-md-4 col-form-label text-md-right">{{ __('役職') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="position2" type="text" class="form-control{{ $errors->has('position2') ? ' is-invalid' : '' }}" name="position2" value="{{ old('position2') }}" required>
+
+                                @if ($errors->has('position2'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('position2') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="period2" class="col-md-4 col-form-label text-md-right">{{ __('期間') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="period2" type="text" class="form-control{{ $errors->has('period2') ? ' is-invalid' : '' }}" name="period" value="{{ old('period2') }}" required>
+
+                                @if ($errors->has('period2'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('period2') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address　※') }}</label>
