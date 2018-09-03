@@ -52,7 +52,7 @@
 
                         <br>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('名前　※') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('氏名　※') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -60,6 +60,22 @@
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('性別　※') }}</label>
+
+                            <div class="col-md-6 btn-group btn-group-toggle" data-toggle="buttons">
+                                <input id="gender" type="button" class="btn btn-outline-secondary form-control{{ $errors->has('tel') ? ' is-invalid' : '' }}" name="options"  autocomplete="off" value="男性" checked>
+                        
+                                <input id="gender" type="button" class="btn btn-outline-secondary form-control{{ $errors->has('tel') ? ' is-invalid' : '' }}" name="options"  autocomplete="off" value="女性" checked>
+                            
+                            @if ($errors->has('tel'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('tel') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -130,13 +146,7 @@
                             <label for="master_university" class="col-md-4 col-form-label text-md-right">{{ __('大学院名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="master_university" type="text" class="form-control{{ $errors->has('master_university') ? ' is-invalid' : '' }}" name="master_university" value="{{ old('master_university') }}" required>
-
-                                @if ($errors->has('master_university'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('master_university') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="master_university" type="text" class="form-control{{ $errors->has('master_university') ? ' is-invalid' : '' }}" name="master_university" value="{{ old('master_university') }}">
                             </div>
                         </div>
 
@@ -144,13 +154,7 @@
                             <label for="master_degree" class="col-md-4 col-form-label text-md-right">{{ __('修士課程名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="master_degree" type="text" class="form-control{{ $errors->has('master_degree') ? ' is-invalid' : '' }}" name="master_degree" value="{{ old('master_degree') }}" required>
-
-                                @if ($errors->has('master_degree'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('master_degree') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="master_degree" type="text" class="form-control{{ $errors->has('master_degree') ? ' is-invalid' : '' }}" name="master_degree" value="{{ old('master_degree') }}">
                             </div>
                         </div>
 
@@ -163,13 +167,7 @@
                             <label for="company_name" class="col-md-4 col-form-label text-md-right">{{ __('その１　会社名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('company_name') }}" required>
-
-                                @if ($errors->has('company_name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('company_name') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name') ? ' is-invalid' : '' }}" name="company_name" value="{{ old('company_name') }}">
                             </div>
                         </div>
 
@@ -177,13 +175,7 @@
                             <label for="position" class="col-md-4 col-form-label text-md-right">{{ __('役職') }}</label>
 
                             <div class="col-md-6">
-                                <input id="position" type="text" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}" name="position" value="{{ old('position') }}" required>
-
-                                @if ($errors->has('position'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('position') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="position" type="text" class="form-control{{ $errors->has('position') ? ' is-invalid' : '' }}" name="position" value="{{ old('position') }}">
                             </div>
                         </div>
 
@@ -191,13 +183,7 @@
                             <label for="period" class="col-md-4 col-form-label text-md-right">{{ __('期間') }}</label>
 
                             <div class="col-md-6">
-                                <input id="period" type="text" class="form-control{{ $errors->has('period') ? ' is-invalid' : '' }}" name="period" value="{{ old('period') }}" required>
-
-                                @if ($errors->has('period'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('period') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="period" type="text" class="form-control{{ $errors->has('period') ? ' is-invalid' : '' }}" name="period" value="{{ old('period') }}">
                             </div>
                         </div>
 
@@ -206,13 +192,7 @@
                             <label for="company_name2" class="col-md-4 col-form-label text-md-right">{{ __('その２　会社名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name2') ? ' is-invalid' : '' }}" name="company_name2" value="{{ old('company_name2') }}" required>
-
-                                @if ($errors->has('company_name2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('company_name2') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="company_name" type="text" class="form-control{{ $errors->has('company_name2') ? ' is-invalid' : '' }}" name="company_name2" value="{{ old('company_name2') }}">
                             </div>
                         </div>
 
@@ -220,13 +200,7 @@
                             <label for="position2" class="col-md-4 col-form-label text-md-right">{{ __('役職') }}</label>
 
                             <div class="col-md-6">
-                                <input id="position2" type="text" class="form-control{{ $errors->has('position2') ? ' is-invalid' : '' }}" name="position2" value="{{ old('position2') }}" required>
-
-                                @if ($errors->has('position2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('position2') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="position2" type="text" class="form-control{{ $errors->has('position2') ? ' is-invalid' : '' }}" name="position2" value="{{ old('position2') }}">
                             </div>
                         </div>
 
@@ -234,13 +208,7 @@
                             <label for="period2" class="col-md-4 col-form-label text-md-right">{{ __('期間') }}</label>
 
                             <div class="col-md-6">
-                                <input id="period2" type="text" class="form-control{{ $errors->has('period2') ? ' is-invalid' : '' }}" name="period" value="{{ old('period2') }}" required>
-
-                                @if ($errors->has('period2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('period2') }}</strong>
-                                    </span>
-                                @endif
+                                <input id="period2" type="text" class="form-control{{ $errors->has('period2') ? ' is-invalid' : '' }}" name="period" value="{{ old('period2') }}">
                             </div>
                         </div>
 

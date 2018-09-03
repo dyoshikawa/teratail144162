@@ -43,6 +43,14 @@
 	</div>
 
 
+
+@foreach($company->users as $user)
+{{ Auth::user()->id }}:{{$company->id}}
+@endforeach<!--company__usersテーブルから値を取ってきてる-->
+
+{{$company->id}}
+{{Auth::user()->id}}<!--companyの idと userの id をこれで表示させられる-->
+
 <?php
 	$role=Auth::user()->role;
 	$users=Auth::user();
@@ -53,9 +61,11 @@
 {{ Auth::user()->id }}
 
 
-{!!Form::open(['url'=>['/companies/{{$company->id}}'], 'method'=>'POST'])!!}
+
+{!!Form::open(['url'=>['/companies', $company->id], 'method'=>'POST'])!!}
 
 {{ csrf_field() }}
+
 
 {{Form::hidden('company_id', '$company->id')}}
 {{Form::hidden('user_id', 'Auth::user()->id')}}

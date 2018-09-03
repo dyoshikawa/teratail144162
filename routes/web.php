@@ -14,6 +14,8 @@
 Route::resource("countries", "CountriesController");
 Route::resource("companies", "CompaniesController");
 Route::resource("users", "UsersController");
+Route::post("/companies/{{company->id}}", "CompaniesController@store");
+Route::get("/companies/{id}", "CompaniesController@show");
 
 
 Auth::routes();

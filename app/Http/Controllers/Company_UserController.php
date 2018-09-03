@@ -3,29 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Company;
-use App\User;
-use App\Company_User;
 
-class CompaniesController extends Controller
+class Company_UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-       /*public function __construct()
-    {
-        $this->middleware('auth', ['except'=>['show']]);
-    }*/
-
-
     public function index()
     {
         //
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +23,7 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        return view('companies.create');
+        //
     }
 
     /**
@@ -44,12 +33,18 @@ class CompaniesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $company=Company::findOrFail($request->input('company_id'));
-        $user=User::findOrFail(Auth::id());
-        $company->users()->attach($user->id);
-        return redirect('/companies/{{$company->id}}')->with('success', 'Successfully applyed');
+    {
+        $validator = Validator::make($request->all(), [
+            'company_id' => '$company->id',
+            'user_id' => 'Auth::user()->id',
+        ]);
 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        Company_User::create($request->all());
+        return redirect('/companies/{{$company->id}}');
     }
 
     /**
@@ -60,9 +55,7 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        $company=Company::find($id);
-        return view('companies.show')->with('company', $company);
-
+        //
     }
 
     /**
@@ -73,8 +66,7 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        $company=Company::find($id);
-        return view('companies.edit')->with('company', $company);
+        //
     }
 
     /**

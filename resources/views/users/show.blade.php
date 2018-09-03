@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <h1>ユーザーのShowページ</h1>　
   <div class="container">
     <div class="table-responsive">
@@ -16,13 +19,17 @@
 
 <br>
 
-    <a href="/users/{{$user->id}}/edit" class="btn btn-primary">{{ Form::submit('Edit', ['class'=>'btn btn-primary']) }}</a>
-
-    <a href="/users" class="btn btn-primary">{{ Form::submit('Back', ['class'=>'btn btn-primary']) }}</a>
-
+    
     {!! Form::open(['url'=>['/users', $user->id], 'method'=>'POST', 'class'=>'pull-right']) !!}
+
+    {{ Form::submit('Back', ['class'=>'btn btn-success']) }}
+
+    {{ Form::submit('Edit', ['class'=>'btn btn-primary']) }}
 
     {{ Form::hidden('_method', 'DELETE') }}
     {{ Form::submit('Delete', ['class'=>'btn btn-danger']) }}
+
     {!! Form::close() !!}
 </div>
+
+@endsection
