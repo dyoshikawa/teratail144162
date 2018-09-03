@@ -56,18 +56,12 @@
 	$users=Auth::user();
 ?>
 
-@if($role == "user")
 <h1>{{ Auth::user()->name }}</h1>
 {{ Auth::user()->id }}
 
+{!!Form::open(['route' => 'companies.store'])!!}
 
-
-{!!Form::open(['url'=>['/companies', $company->id], 'method'=>'POST'])!!}
-
-{{ csrf_field() }}
-
-
-{{Form::hidden('company_id', '$company->id')}}
+{{Form::hidden('company_id', $company->id)}}
 {{Form::hidden('user_id', 'Auth::user()->id')}}
 
 {{Form::submit('apply',['class'=>'btn btn-danger'])}}
@@ -75,7 +69,6 @@
 {!! Form::close() !!}
 
 <a class="btn btn-success float-right" href="/countries/{{$company->country_id}}" style="margin-right: 10%">Back</a>
-@endif
 
 </main>
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\User;
 use App\Company_User;
+use Illuminate\Support\Facades\Auth;
 
 class CompaniesController extends Controller
 {
@@ -44,11 +45,11 @@ class CompaniesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $company=Company::findOrFail($request->input('company_id'));
         $user=User::findOrFail(Auth::id());
         $company->users()->attach($user->id);
-        return redirect('/companies/{{$company->id}}')->with('success', 'Successfully applyed');
+        return redirect('/companies/' . $company->id)->with('success', 'Successfully applyed');
 
     }
 
